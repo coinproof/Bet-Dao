@@ -1,5 +1,5 @@
 # CryptStarterDAO
-# Created by Xing Shang
+
 1. install node-v16.10.0-x64.msi and yarn-1.22.5.msi
 2. install vscode
 3. goto sourcecode directory and open project with vscode.
