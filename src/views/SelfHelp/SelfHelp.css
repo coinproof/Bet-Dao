@@ -1,0 +1,220 @@
+.self_help{
+    width: 100%;
+    /* background : #0F0F0F; */
+    /* border: 1px solid #080808; */
+    /* box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25); */
+    border-radius: 40px;
+    /* margin-top: 40px; */
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    /* padding: 30px; */
+    padding: 0px 30px;
+    height: fit-content;
+}
+.self_help_duration{
+    display: flex;
+    background: #1C1C1C;
+    border: 1px solid #080808;
+    box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    padding: 20px 40px;
+    justify-content: space-between;
+    height: fit-content;
+}
+.self_help_duration_box{
+    display: flex;
+    flex-direction: column;
+    margin-right: 50px;
+}
+.self_help_duration_box p{
+    margin-bottom: 40px;
+}
+.self_help_activate{
+    background: #2B2A2A;
+    width: 30%;
+    height: 70px;
+}
+.self_help_duration_box button{
+    margin-top: 80px;
+    width: 30%;
+    background : #fff;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    padding: 15px 20px;
+    color: #000;
+    font-size: 18px;
+    border: none;
+    text-align: left;
+}
+.box{
+    /* width: 100%; */
+    border-radius: 40px;
+    display:flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 30px 30px;
+    height: fit-content;
+    /* light grey bg */
+
+    background: #0F0F0F;
+    border-radius: 40px;
+}
+.box2{
+    margin-top: 40px;
+    display : flex;
+    flex-direction: row;
+
+}
+.self_help_donate{
+    background: #1C1C1C;
+    /* DARK STROKE CARD */
+
+    /* border: 1px solid #080808; */
+    /* CARD DARK */
+
+    /* box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25); */
+    border-radius: 10px;
+    padding :  10px;
+    margin-left: 10px;
+    
+}
+
+.donate_box_heading{
+    font-size: 24px;
+    font-weight: 400;
+    font-style: normal;
+
+}
+.donate_box_p{
+    color: grey;
+}
+.donation_amount_box{
+    display: flex;
+    /* justify-content:space-between; */
+}
+.donation_amount_box button{
+    margin-top: 40px;
+    width: 30%;
+    background : #fff;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    padding: 15px 10px;
+    color: #000;
+    font-size: 18px;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    text-align: center;
+    margin-left: 10px;
+}
+.donation_amount_box button:focus{
+    background : #b1350c;
+}
+.donation_input input{
+    width : 90%;
+    background : #000;
+    border : none;
+    padding: 20px 10px;
+    color : #fff;
+}
+.donation_input input::placeholder{
+    text-align: right;
+}
+.donate_btn{
+    margin-top: 40px;
+    width: 100%;
+    background: #2B2A2A;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    padding: 15px 20px;
+    color: #fff;
+    font-size: 18px;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    text-align: left;
+}
+.speak_to_someone{
+    padding: 15px 10px;
+}
+.speak_to_someone_donate_box span{
+    margin-left: 10px;
+}
+
+@media (max-width : 1500px) {
+    .self_help_activate {
+        background: #2B2A2A;
+        width: 60%;
+        height: 70px;
+    }
+    .self_help_duration_box button{
+        width: 60%;
+    }
+    .donation_amount_box button{
+        width: 60%;
+    }
+}
+@media (max-width : 1300px) {
+    .self_help_activate {
+        background: #2B2A2A;
+        width: 90%;
+        height: 70px;
+    }
+    .self_help_duration_box button{
+        width: 90%;
+    }
+    
+}
+@media (max-width : 1000px) {
+    .self_help_duration{
+        flex-direction: column;
+        align-items: center;
+    }
+    .box {
+        /* width: 100%; */
+        border-radius: 40px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        padding: 30px 30px;
+        height: -moz-fit-content;
+        height: fit-content;
+        background: #0F0F0F;
+        border-radius: 40px;
+    }
+}
+
+@media (max-width : 700px) {
+    .self_help_duration{
+        flex-direction: column;
+        align-items: center;
+    }
+    .self_help_activate {
+        background: #2B2A2A;
+        width: 60%;
+        height: 70px;
+    }
+    .self_help_duration_box button {
+        width: 60%;
+    }
+    .box2{
+        flex-direction: column;
+    }
+    .self_help_donate{
+        margin-top: 20px;
+        /* padding: 0px 20px; */
+    }
+    .box {
+        width: 100%;
+        border-radius: 40px;
+        display: flex;
+        /* justify-content: space-between; */
+        flex-direction: column;
+        padding: 30px 10px;
+        height: -moz-fit-content;
+        height: fit-content;
+        background: #0F0F0F;
+        border-radius: 40px;
+    }
+}
