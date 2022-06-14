@@ -1,3 +1,11 @@
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -12,6 +20,8 @@ import { css, tw } from "twind/style";
 import logoPng from "../../resources/imgs/logo.png";
 import logo2Png from "../../resources/imgs/logo2.png";
 import Docs from "../../resources/svgs/docs";
+import "./home.css";
+import {BsCircleFill, BsBoxArrowUpRight, BsFillQuestionCircleFill} from 'react-icons/bs'
 
 const index = ({ children }) => {
   const { connect, disconnect, connected, web3, chainID } = useWeb3Context();
@@ -19,6 +29,19 @@ const index = ({ children }) => {
   const isMobile = useMediaQuery({ maxWidth: "768px" });
   const history = useHistory();
   const xd = useRouteMatch();
+  const [open, setOpen] = React.useState(false);
+  const [scroll, setScroll] = React.useState("paper");
+
+  const handleClickOpen = (scrollType) => () => {
+    setOpen(true);
+    setScroll(scrollType);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const descriptionElementRef = React.useRef(null);
 
   console.log(xd);
 
@@ -104,6 +127,15 @@ const index = ({ children }) => {
     setCurrent(xd.path);
   }, [xd]);
 
+  useEffect(() => {
+    if (open) {
+      const { current: descriptionElement } = descriptionElementRef;
+      if (descriptionElement !== null) {
+        descriptionElement.focus();
+      }
+    }
+  }, [open]);
+
   return (
     <section className={tw("w-full min-h-screen flex flex-col relative")}>
       <header
@@ -121,7 +153,7 @@ const index = ({ children }) => {
             className={tw("cursor-pointer")}
             // onClick={() => history.push("/betSlip")}
           >
-            DAO
+            BETS
           </p>
           <p
             className={tw("cursor-pointer uppercase")}
@@ -135,6 +167,12 @@ const index = ({ children }) => {
           >
             {btnText}
           </p>
+          <p
+            className={tw("cursor-pointer uppercase")}
+            onClick={handleClickOpen("paper")}
+          >
+            Popup
+          </p>
 
           <p
             onClick={setSidebar.bind(this, !sidebar)}
@@ -144,6 +182,88 @@ const index = ({ children }) => {
           </p>
         </div>
       </header>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        scroll={scroll}
+        aria-labelledby="scroll-dialog-title"
+        aria-describedby="scroll-dialog-description"
+      >
+        {/* <DialogTitle id="scroll-dialog-title">Subscribe</DialogTitle> */}
+        <DialogContent dividers={scroll === "paper"}>
+          <DialogContentText
+            id="scroll-dialog-description"
+            ref={descriptionElementRef}
+            tabIndex={-1}
+          >
+            <div className="topBar">
+              <div id="address" style={{display:"flex"}}><BsCircleFill color="green"/>&nbsp;0x3244...2646</div>
+              <div id="buyBet">
+                <a href="#" style={{display:"flex"}}>BUY BETS&nbsp;&nbsp;<BsBoxArrowUpRight/></a>
+              </div>
+            </div>
+            <div id="bal">
+              <p>TOTAL BALANCE</p>
+              <h3>$3000</h3>
+            </div>
+            <div id="horCard">
+              <div className="walletCard">
+                <div id="betImg">
+                  <img src={logoPng} alt="" />
+                </div>
+                <div id="walletCardBody">
+                  <div id="infoA">
+                    <h4>BETSWAMP V2</h4>
+                    <p>$2.36<span>+20.2%</span></p>
+                  </div>
+                  <div id="infoB">
+                    <h4>250 BETS</h4>
+                    <p>$2000</p>
+                  </div>
+                </div>
+              </div>
+              <div className="walletCard">
+                <div id="betImg">
+                  <img src={logoPng} alt="" />
+                </div>
+                <div id="walletCardBody">
+                  <div id="infoA">
+                    <h4>BETSWAMP V2</h4>
+                    <p>$2.36<span>+20.2%</span></p>
+                  </div>
+                  <div id="infoB">
+                    <h4>250 BETS</h4>
+                    <p>$2000</p>
+                  </div>
+                </div>
+              </div>
+              <div className="walletCard">
+                <div id="betImg">
+                  <img src={logoPng} alt="" />
+                </div>
+                <div id="walletCardBody">
+                  <div id="infoA">
+                    <h4>BETSWAMP V2</h4>
+                    <p>$2.36<span>+20.2%</span></p>
+                  </div>
+                  <div id="infoB">
+                    <h4>250 BETS</h4>
+                    <p>$2000</p>
+                  </div>
+                </div>
+              </div>
+              <div className="validHead">
+                <p>VALIDATION POINTS<br/><span>Lock your sBETS to earn more validation points.</span></p>
+                <BsFillQuestionCircleFill/>
+              </div>
+            </div>
+          </DialogContentText>
+        </DialogContent>
+        {/* <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleClose}>Subscribe</Button>
+        </DialogActions> */}
+      </Dialog>
       <div className={tw("flex flex-1 relative")}>
         <nav
           className={tw(
@@ -184,7 +304,7 @@ const index = ({ children }) => {
                   path.includes(current) &&
                     css({
                       "& svg path": { fill: "#FF4003", stroke: "#FF4003" },
-                      borderLeft: "1px solid #FF4003",
+                      borderLeft: "2px solid #FF4003",
                       backgroundColor: "#0A0A0A",
                     })
                 )}
