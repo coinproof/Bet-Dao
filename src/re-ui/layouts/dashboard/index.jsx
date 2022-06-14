@@ -256,6 +256,10 @@ const index = ({ children }) => {
                 <p>VALIDATION POINTS<br/><span>Lock your sBETS to earn more validation points.</span></p>
                 <BsFillQuestionCircleFill/>
               </div>
+              <div className="validPoint">
+              <p>TOTAL VALIDATION POINTS EARNED</p><br />
+              <h3>8000</h3>
+              </div>
             </div>
           </DialogContentText>
         </DialogContent>
@@ -287,7 +291,7 @@ const index = ({ children }) => {
                   path && history.push(Array.isArray(path) ? path[0] : path);
                 }}
                 className={tw(
-                  "w-full h-[80px] flex pl-[13%] items-center gap-4 cursor-pointer transition-all duration-500 ",
+                  "w-full h-[80px] flex pl-[13%] items-center gap-4 cursor-pointer transition-all ease-in-out duration-500 ",
                   css({
                     "& svg": { zoom: 0.6 },
                   }),
@@ -304,7 +308,7 @@ const index = ({ children }) => {
                   path.includes(current) &&
                     css({
                       "& svg path": { fill: "#FF4003", stroke: "#FF4003" },
-                      borderLeft: "2px solid #FF4003",
+                      borderLeft: "5px solid #FF4003",
                       backgroundColor: "#0A0A0A",
                     })
                 )}

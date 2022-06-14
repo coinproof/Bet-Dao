@@ -7,9 +7,13 @@
 .MuiDialog-scrollPaper{
     justify-content: flex-end !important;
 }
+
+/* To change the height of Popup use this */
 .MuiDialog-paperScrollPaper{
     max-height: calc(100% - 100px) !important;
 }
+
+/* To change the width of Popup use this currently max-width is at 600px by default*/
 .MuiDialog-paperWidthSm{
     min-width: 300px;
     width: 100%;
@@ -72,4 +76,15 @@
 }
 .validHead span{
     font-size: 10px;
+}
+.validPoint{
+    padding: 30px 0;
+}
+.validPoint p{
+    font-size: 12px;
+    color: #BCBCBC;
+}
+.validPoint h3{
+    color: #fff;
+    font-size: 16px;
 }
