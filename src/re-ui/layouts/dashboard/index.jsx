@@ -54,6 +54,7 @@ const index = ({ children }) => {
   const [address, setAddress] = useState("");
   const [valdation, setValidation] = useState(0);
   const [fill, setFill] = useState(0)
+  const [active, setActive] = useState();
 
   useEffect(() => {
     const init = async () => {
@@ -198,6 +199,18 @@ const index = ({ children }) => {
     }
   }, [open]);
 
+  setInterval(()=>{
+    const path = window.location.pathname
+    if(path == '/bonds'){
+      setActive(1)
+    }
+    else if(path == '/stake'){
+      setActive(2)
+    }
+    else{
+      setActive(3)
+    }
+  },100)
   
   return (
     <section className={tw("w-full min-h-screen flex flex-col relative")}>
@@ -356,7 +369,7 @@ const index = ({ children }) => {
         >
           <div>
             <div className="rirusidebar">
-              <div >
+              <div>
               <NavLink to="/">
                 <div className="box">
                   <svg
