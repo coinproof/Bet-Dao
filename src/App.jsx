@@ -13,7 +13,7 @@ import {
 } from "react-router-dom";
 import Messages from "./components/Messages/Messages";
 import NavDrawer from "./components/Sidebar/NavDrawer.jsx";
-import Sidebar from "./components/Sidebar/Sidebar.jsx";
+// import Sidebar from "./components/Sidebar/Sidebar.jsx";
 import TopBar from "./components/TopBar/TopBar.jsx";
 import { storeQueryParameters } from "./helpers/QueryParameterHelper";
 import useBonds from "./hooks/Bonds";
@@ -29,18 +29,18 @@ import { loadAppDetails } from "./slices/AppSlice";
 import { calcBondDetails } from "./slices/BondSlice";
 import "./style.scss";
 import { dark as darkTheme } from "./themes/dark.js";
-import { Bond, ChooseBond, Presale, Stake, TreasuryDashboard } from "./views";
-import NotFound from "./views/404/NotFound";
-import BetSlip from "./views/Betslip/Betslip";
-import Calculator from "./views/Calculator/Calculator";
-import CreateEvent from "./views/CreateEvent/CreateEvent";
-import History from "./views/CreateEvent/History";
-import Page2 from "./views/CreateEvent/Page2";
-import Page3 from "./views/CreateEvent/Page3";
-import Page4 from "./views/CreateEvent/Page4";
-import SelfHelp from "./views/SelfHelp/SelfHelp";
-import ValidatePage2 from "./views/ValidateEvents/Page2";
-import ValidateEvents from "./views/ValidateEvents/ValidateEvents";
+// import { Bond, ChooseBond, Presale, Stake, TreasuryDashboard } from "./views";
+// import NotFound from "./views/404/NotFound";
+// import BetSlip from "./views/Betslip/Betslip";
+// import Calculator from "./views/Calculator/Calculator";
+// import CreateEvent from "./views/CreateEvent/CreateEvent";
+// import History from "./views/CreateEvent/History";
+// import Page2 from "./views/CreateEvent/Page2";
+// import Page3 from "./views/CreateEvent/Page3";
+// import Page4 from "./views/CreateEvent/Page4";
+// import SelfHelp from "./views/SelfHelp/SelfHelp";
+// import ValidatePage2 from "./views/ValidateEvents/Page2";
+// import ValidateEvents from "./views/ValidateEvents/ValidateEvents";
 
 import {
   REUIBetSlip,
@@ -263,7 +263,7 @@ function App() {
           })}
           {/* {isAppLoading && <LoadingSplash />} */}
 
-          <Route
+          {/* <Route
             path="/"
             render={({ match }) => {
               return (
@@ -304,9 +304,7 @@ function App() {
                       <Route path="/stake">
                         <Stake />
                       </Route>
-                      {/* <Route exact path="/">
-                      <Redirect to="/home" />
-                    </Route> */}
+                     
                       <Route exact path="/">
                         <Redirect to="dashboard" />
                       </Route>
@@ -364,7 +362,7 @@ function App() {
                 </div>
               );
             }}
-          />
+          /> */}
         </Switch>
       </ThemeProvider>
     </Router>

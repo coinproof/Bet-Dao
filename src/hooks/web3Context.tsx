@@ -1,10 +1,28 @@
-import React, { useState, ReactElement, useContext, useEffect, useMemo, useCallback } from "react";
+import React, {
+  useState,
+  ReactElement,
+  useContext,
+  useEffect,
+  useMemo,
+  useCallback,
+} from "react";
 import Web3Modal from "web3modal";
-import { StaticJsonRpcProvider, JsonRpcProvider, Web3Provider, WebSocketProvider } from "@ethersproject/providers";
+import Web3 from "web3";
+import {
+  StaticJsonRpcProvider,
+  JsonRpcProvider,
+  Web3Provider,
+  WebSocketProvider,
+} from "@ethersproject/providers";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import { EnvHelper } from "../helpers/Environment";
 import { NodeHelper } from "src/helpers/NodeHelper";
 
+import { add } from "date-fns/esm";
+
+const sbet = "0x547F9B81520f568De037BBbe0De790A90Cd79Ca0";
+const bet = "0xd9Bb2c767d511f7Beb009b8Ef3f411ACc7bf7c7d";
+const point = '0x60358A53C79437F1a2402789205de550465dca2e'
 /**
  * kept as function to mimic `getMainnetURI()`
  * @returns string
@@ -51,7 +69,8 @@ export const useWeb3Context = () => {
   const web3Context = useContext(Web3Context);
   if (!web3Context) {
     throw new Error(
-      "useWeb3Context() can only be used inside of <Web3ContextProvider />, " + "please declare it at a higher level.",
+      "useWeb3Context() can only be used inside of <Web3ContextProvider />, " +
+        "please declare it at a higher level."
     );
   }
   const { onChainProvider } = web3Context;
@@ -65,7 +84,9 @@ export const useAddress = () => {
   return address;
 };
 
-export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ children }) => {
+export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({
+  children,
+}) => {
   const [connected, setConnected] = useState(false);
   // NOTE (appleseed): if you are testing on rinkeby you need to set chainId === 4 as the default for non-connected wallet testing...
   // ... you also need to set getTestnetURI() as the default uri state below
@@ -76,7 +97,11 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
   const [uri, setUri] = useState(getMainnetURI());
 
   // const [provider, setProvider] = useState<JsonRpcProvider>(new StaticJsonRpcProvider(uri));
-  const [provider, setProvider] = useState<JsonRpcProvider>(new StaticJsonRpcProvider("https://speedy-nodes-nyc.moralis.io/24036fe0cb35ad4bdc12155f/bsc/testnet"));
+  const [provider, setProvider] = useState<JsonRpcProvider>(
+    new StaticJsonRpcProvider(
+      "https://speedy-nodes-nyc.moralis.io/24036fe0cb35ad4bdc12155f/bsc/testnet"
+    )
+  );
 
   const [web3Modal, setWeb3Modal] = useState<Web3Modal>(
     new Web3Modal({
@@ -88,13 +113,13 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
           options: {
             rpc: {
               56: getMainnetURI(),
-              97 : "https://speedy-nodes-nyc.moralis.io/24036fe0cb35ad4bdc12155f/bsc/testnet",
+              97: "https://speedy-nodes-nyc.moralis.io/24036fe0cb35ad4bdc12155f/bsc/testnet",
               //4: getTestnetURI(),
             },
           },
         },
       },
-    }),
+    })
   );
 
   const hasCachedProvider = (): Boolean => {
@@ -107,7 +132,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
   // ... so I changed these listeners so that they only apply to walletProviders, eliminating
   // ... polling to the backend providers for network changes
   const _initListeners = useCallback(
-    rawProvider => {
+    (rawProvider) => {
       if (!rawProvider.on) {
         return;
       }
@@ -125,7 +150,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
         window.location.reload();
       });
     },
-    [provider],
+    [provider]
   );
 
   /**
@@ -135,13 +160,15 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
     console.error(
       "You are switching networks",
       EnvHelper.getOtherChainID(),
-      otherChainID === EnvHelper.getOtherChainID() || otherChainID === 4,
+      otherChainID === EnvHelper.getOtherChainID() || otherChainID === 4
     );
     if (chainID !== otherChainID) {
       console.warn("You are switching networks", EnvHelper.getOtherChainID());
       if (otherChainID === EnvHelper.getOtherChainID() || otherChainID === 4) {
         setChainID(otherChainID);
-        otherChainID === EnvHelper.getOtherChainID() ? setUri(getMainnetURI()) : setUri(getTestnetURI());
+        otherChainID === EnvHelper.getOtherChainID()
+          ? setUri(getMainnetURI())
+          : setUri(getTestnetURI());
         return true;
       }
       return false;
@@ -159,7 +186,9 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
 
     const connectedProvider = new Web3Provider(rawProvider, "any");
 
-    const chainId = await connectedProvider.getNetwork().then(network => network.chainId);
+    const chainId = await connectedProvider
+      .getNetwork()
+      .then((network) => network.chainId);
     const connectedAddress = await connectedProvider.getSigner().getAddress();
     const validNetwork = _checkNetwork(chainId);
     if (!validNetwork) {
@@ -188,8 +217,26 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
   }, [provider, web3Modal, connected]);
 
   const onChainProvider = useMemo(
-    () => ({ connect, disconnect, hasCachedProvider, provider, connected, address, chainID, web3Modal }),
-    [connect, disconnect, hasCachedProvider, provider, connected, address, chainID, web3Modal],
+    () => ({
+      connect,
+      disconnect,
+      hasCachedProvider,
+      provider,
+      connected,
+      address,
+      chainID,
+      web3Modal,
+    }),
+    [
+      connect,
+      disconnect,
+      hasCachedProvider,
+      provider,
+      connected,
+      address,
+      chainID,
+      web3Modal,
+    ]
   );
 
   useEffect(() => {
@@ -197,5 +244,181 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
     NodeHelper.checkAllNodesStatus();
   }, []);
 
-  return <Web3Context.Provider value={{ onChainProvider }}>{children}</Web3Context.Provider>;
+  return (
+    <Web3Context.Provider value={{ onChainProvider }}>
+      {children}
+    </Web3Context.Provider>
+  );
 };
+const Points = [
+  {
+    inputs: [
+      { internalType: "address", name: "bets_token", type: "address" },
+      { internalType: "address", name: "_context", type: "address" },
+    ],
+    stateMutability: "nonpayable",
+    type: "constructor",
+  },
+  {
+    inputs: [
+      { internalType: "address", name: "_contextAddress", type: "address" },
+    ],
+    name: "changeContextContractAddress",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "address", name: "_tokenAddress", type: "address" },
+    ],
+    name: "changeSBETSContractAddress",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "claimValidationPoint",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "address", name: "validator_address", type: "address" },
+    ],
+    name: "deductValidationPoint",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "uint256", name: "amount", type: "uint256" }],
+    name: "earnValidationPoints",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getContextContractAddress",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getPlatformAddress",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getSBETSContractAddress",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "address", name: "_address", type: "address" }],
+    name: "getUserPendingPoints",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "revokeValidationPointsEarning",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "address", name: "_address", type: "address" }],
+    name: "setPlatformAddress",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "address", name: "_address", type: "address" }],
+    name: "showValidationPoints",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "address", name: "_address", type: "address" }],
+    name: "userCurrentlyLockedBETS",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+];
+
+const EthProvider = async () => {
+  return new Web3(window.ethereum);
+};
+export const connectWallet = async () => {
+  return await window.ethereum.enable();
+};
+export const WalletAddress = async () => {
+  const web3 = await EthProvider();
+  const address = await web3.eth.getAccounts();
+  return address[0];
+};
+export const sbetBalance = async () => {
+  const web3 = await EthProvider();
+  const contract = new web3.eth.Contract(
+    [
+      {
+        inputs: [{ internalType: "address", name: "who", type: "address" }],
+        name: "balanceOf",
+        outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+        stateMutability: "view",
+        type: "function",
+      },
+    ],
+    sbet
+  );
+  const sbetbalance = await contract.methods
+    .balanceOf(await WalletAddress())
+    .call();
+  return sbetbalance;
+};
+
+export const betBalance = async () => {
+  const web3 = await EthProvider();
+  const contract = new web3.eth.Contract(
+    [
+      {
+        inputs: [{ internalType: "address", name: "who", type: "address" }],
+        name: "balanceOf",
+        outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+        stateMutability: "view",
+        type: "function",
+      },
+    ],
+    bet
+  );
+  const sbetbalance = await contract.methods
+    .balanceOf(await WalletAddress())
+    .call();
+  return sbetbalance;
+};
+export const ValidationPoints = async () => {
+  const web3 = await EthProvider();
+  const contract = new web3.eth.Contract([{
+    inputs: [{ internalType: "address", name: "_address", type: "address" }],
+    name: "showValidationPoints",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  }],point);
+  const pointsva = await contract.methods.showValidationPoints(await WalletAddress()).call();
+  return pointsva;
+};
+
+

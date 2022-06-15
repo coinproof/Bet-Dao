@@ -88,3 +88,24 @@
     color: #fff;
     font-size: 16px;
 }
+
+.rirusidebar{
+    padding: 30px 20px;
+}
+
+.box{
+    display: flex;
+    padding: 25px 0px;
+    
+}
+
+.box p{
+    margin-left: 30px;
+    margin-top: 5px;
+    color: #BCBCBC;
+    
+}
+hr{
+    border: 1px solid #383838;
+    width: 100%;
+}

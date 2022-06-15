@@ -155,7 +155,7 @@ export function BondTableData({ bond }) {
         )}
       </TableCell>
       <TableCell>
-        <Link component={NavLink} to={`/re-ui/bonds/${bond.name}`}>
+        <Link component={NavLink} to={`/bonds/${bond.name}`}>
           <button
             className={tw(
               "py-3 bg-white rounded-[10px] font-mons flex justify-center items-center px-5 text-[12px] font-extrabold uppercase text-black"
