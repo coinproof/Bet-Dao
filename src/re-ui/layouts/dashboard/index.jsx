@@ -10,7 +10,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
-import { useHistory, useRouteMatch, NavLink } from "react-router-dom";
+import { useHistory, useRouteMatch, NavLink, Link } from "react-router-dom";
 import { useUpdateEffect } from "react-use";
 import { useWeb3Context } from "src/hooks/web3Context";
 import Books from "src/re-ui/resources/svgs/books";
@@ -53,8 +53,11 @@ const index = ({ children }) => {
   const [sbets, setSbets] = useState(0);
   const [address, setAddress] = useState("");
   const [valdation, setValidation] = useState(0);
-  const [fill, setFill] = useState(0)
-  const [active, setActive] = useState();
+  const [fill, setFill] = useState(0);
+  // const [active, setActive] = useState();
+  const [slideCount, setSlideCount] = useState({
+    top: "0px",
+  })
 
   useEffect(() => {
     const init = async () => {
@@ -199,19 +202,26 @@ const index = ({ children }) => {
     }
   }, [open]);
 
-  setInterval(()=>{
-    const path = window.location.pathname
-    if(path == '/bonds'){
-      setActive(1)
+  // setInterval(() => {
+  //   const path = window.location.pathname;
+  //   if (path == "/bonds") {
+  //     setActive(1);
+  //   } else if (path == "/stake") {
+  //     setActive(2);
+  //   } else {
+  //     setActive(3);
+  //   }
+  // }, 100);
+  const handleSlide = (num) => {
+    if (num === 1) {
+      setSlideCount({top: '0px'})
+    } else if (num === 2){
+      setSlideCount({top: '75px'})
+    }else if(num === 3){
+      setSlideCount({top: '150px'})
     }
-    else if(path == '/stake'){
-      setActive(2)
-    }
-    else{
-      setActive(3)
-    }
-  },100)
-  
+  }
+
   return (
     <section className={tw("w-full min-h-screen flex flex-col relative")}>
       <header
@@ -368,33 +378,38 @@ const index = ({ children }) => {
           )}
         >
           <div>
-            <div className="rirusidebar">
-              <div>
-              <NavLink to="/">
-                <div className="box">
+            <ul className="rirusidebar">
+              <li
+                className={window.location.pathname === "/" ? "firstList" : ""}
+                onClick={() => handleSlide(1)}
+              >
+                <NavLink to="/" className="sideLink">
                   <svg
                     width="25"
                     height="25"
                     viewBox="0 0 29 25"
-                    fill={"#FFF"}
+                    fill="#0F0F0F"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M12.0455 16.9545H16.9545M22.4773 23.0909C23.2025 23.0909 23.9207 22.9481 24.5907 22.6705C25.2608 22.393 25.8696 21.9862 26.3824 21.4733C26.8953 20.9605 27.3021 20.3517 27.5796 19.6816C27.8572 19.0116 28 18.2934 28 17.5682C28 16.8429 27.8572 16.1248 27.5796 15.4547C27.3021 14.7847 26.8953 14.1759 26.3824 13.663C25.8696 13.1502 25.2608 12.7434 24.5907 12.4658C23.9207 12.1883 23.2025 12.0455 22.4773 12.0455C21.0126 12.0455 19.6078 12.6273 18.5721 13.663C17.5364 14.6987 16.9545 16.1035 16.9545 17.5682C16.9545 19.0329 17.5364 20.4376 18.5721 21.4733C19.6078 22.509 21.0126 23.0909 22.4773 23.0909V23.0909ZM12.0455 5.90909H16.9545H12.0455ZM1.61364 15.1136C1.61364 15.1136 6.52273 3.45455 7.13636 2.22727C7.75 1 8.97727 1 9.59091 1C10.2045 1 12.0455 1 12.0455 3.45455V16.9545L1.61364 15.1136ZM6.52273 23.0909C5.79747 23.0909 5.07932 22.9481 4.40927 22.6705C3.73922 22.393 3.1304 21.9862 2.61757 21.4733C2.10474 20.9605 1.69794 20.3517 1.42039 19.6816C1.14285 19.0116 1 18.2934 1 17.5682C1 16.8429 1.14285 16.1248 1.42039 15.4547C1.69794 14.7847 2.10474 14.1759 2.61757 13.663C3.1304 13.1502 3.73922 12.7434 4.40927 12.4658C5.07932 12.1883 5.79747 12.0455 6.52273 12.0455C7.98745 12.0455 9.39217 12.6273 10.4279 13.663C11.4636 14.6987 12.0455 16.1035 12.0455 17.5682C12.0455 19.0329 11.4636 20.4376 10.4279 21.4733C9.39217 22.509 7.98745 23.0909 6.52273 23.0909V23.0909ZM27.3864 15.1136C27.3864 15.1136 22.4773 3.45455 21.8636 2.22727C21.25 1 20.0227 1 19.4091 1C18.7955 1 16.9545 1 16.9545 3.45455V16.9545L27.3864 15.1136Z"
-                      stroke="#FF4003"
+                      stroke="#BCBCBC"
                       stroke-width="2"
                     />
                   </svg>
 
-                  
-                    <p>Overview</p>
-                  
-                </div>
+                  <span>Overview</span>
                 </NavLink>
-              </div>
-              <div >
-              <NavLink to="/bonds">
-                <div className="box">
+              </li>
+              <li
+                className={
+                  window.location.pathname.includes("/bonds") === true
+                    ? "secondList"
+                    : ""
+                }
+                onClick={() => handleSlide(2)}
+              >
+                <NavLink to="/bonds" className="sideLink">
                   <svg
                     width="25"
                     height="25"
@@ -408,14 +423,18 @@ const index = ({ children }) => {
                     />
                   </svg>
 
-                  
-                    <p>Bond</p>
-                </div>
+                  <span>Bond</span>
                 </NavLink>
-              </div>
-              <div >
-                 <NavLink to="/stake">
-                <div className="box">
+              </li>
+              <li
+                className={
+                  window.location.pathname.includes("/stake") === true
+                    ? "thirdList"
+                    : ""
+                }
+                onClick={() => handleSlide(3)}
+              >
+                <NavLink to="/stake" className="sideLink">
                   <svg
                     width="25"
                     height="25"
@@ -463,32 +482,30 @@ const index = ({ children }) => {
                     />
                   </svg>
 
-                 
-                    <p>Stake</p>
-                  
-                </div>
+                  <span>Stake</span>
                 </NavLink>
-              </div>
+              </li>
               <hr />
-              <div>
-                <div className="box">
+              <li>
+                <div className="sideLink">
                   <img src={betlogo} width={25} />
                   <a
                     href="https://62a4a3981ffcb3269d50ae0e--betting-platform.netlify.app/"
                     target="_blank"
                   >
-                    <p>Decentralised betting</p>
+                    <span>Decentralised betting</span>
                   </a>
                 </div>
-              </div>
+              </li>
               <hr />
-              <div>
-                <div className="box">
+              <li>
+                <div className="sideLink">
                   <img src={docs} width={25} />
-                  <p>Docs</p>
+                  <span>Docs</span>
                 </div>
-              </div>
-            </div>
+              </li>
+              <li className="slide" style={slideCount}></li>
+            </ul>
             {/* {sidebarData.map(({ title, icon, path, special }) => (
               <div
                 onClick={() => {

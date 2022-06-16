@@ -1,111 +1,140 @@
-.MuiBackdrop-root{
-    backdrop-filter: blur(0) !important;
+.MuiBackdrop-root {
+  backdrop-filter: blur(0) !important;
 }
-.MuiDialog-paper{
-    margin: 120px 5px 32px 32px !important;
+.MuiDialog-paper {
+  margin: 120px 5px 32px 32px !important;
 }
-.MuiDialog-scrollPaper{
-    justify-content: flex-end !important;
+.MuiDialog-scrollPaper {
+  justify-content: flex-end !important;
 }
 
 /* To change the height of Popup use this */
-.MuiDialog-paperScrollPaper{
-    max-height: calc(100% - 100px) !important;
+.MuiDialog-paperScrollPaper {
+  max-height: calc(100% - 100px) !important;
 }
 
 /* To change the width of Popup use this currently max-width is at 600px by default*/
-.MuiDialog-paperWidthSm{
-    min-width: 300px;
-    width: 100%;
+.MuiDialog-paperWidthSm {
+  min-width: 300px;
+  width: 100%;
 }
 
 /* POPUP */
-.topBar{
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
 }
-#address{
-    background-color: #1C1C1C;
-    padding: 5px 13px;
-    border-radius: 25px;
+#address {
+  background-color: #1c1c1c;
+  padding: 5px 13px;
+  border-radius: 25px;
 }
-#buyBet{
-    background-color: #1C1C1C;
-    padding: 5px 13px;
-    border-radius: 25px;
+#buyBet {
+  background-color: #1c1c1c;
+  padding: 5px 13px;
+  border-radius: 25px;
 }
-#bal{
-    text-align: center;
-    padding: 100px 0;
-    font-size: 12px;
+#bal {
+  text-align: center;
+  padding: 100px 0;
+  font-size: 12px;
 }
-#bal h3{
-    font-size: 24px;
-    color: #fff;
+#bal h3 {
+  font-size: 24px;
+  color: #fff;
 }
-#horCard{
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    overflow: hidden;
-    font-size: 12px;
+#horCard {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  overflow: hidden;
+  font-size: 12px;
 }
-.walletCard{
-    display: flex;
-    background-color: #1C1C1C;
-    padding: 30px 10px;
-    margin-bottom: 1px;
+.walletCard {
+  display: flex;
+  background-color: #1c1c1c;
+  padding: 30px 10px;
+  margin-bottom: 1px;
 }
-#betImg{
-    padding: 5px;
-    border-radius: 50%;
-    background-color: #0F0F0F;
-    margin-right: 10px;
+#betImg {
+  padding: 5px;
+  border-radius: 50%;
+  background-color: #0f0f0f;
+  margin-right: 10px;
 }
-#walletCardBody{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    align-items: center;
+#walletCardBody {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
 }
-.validHead{
-    display: flex;
-    justify-content: space-between;
-    padding: 25px 20px;
-    background-color: #1C1C1C;
+.validHead {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 20px;
+  background-color: #1c1c1c;
 }
-.validHead span{
-    font-size: 10px;
+.validHead span {
+  font-size: 10px;
 }
-.validPoint{
-    padding: 30px 0;
+.validPoint {
+  padding: 30px 0;
 }
-.validPoint p{
-    font-size: 12px;
-    color: #BCBCBC;
+.validPoint p {
+  font-size: 12px;
+  color: #bcbcbc;
 }
-.validPoint h3{
-    color: #fff;
-    font-size: 16px;
-}
-
-.rirusidebar{
-    padding: 30px 20px;
+.validPoint h3 {
+  color: #fff;
+  font-size: 16px;
 }
 
-.box{
-    display: flex;
-    padding: 25px 0px;
-    
+/* SIDEBAR */
+.rirusidebar {
+  padding: 0px 20px;
+  position: relative;
 }
-
-.box p{
-    margin-left: 30px;
-    margin-top: 5px;
-    color: #BCBCBC;
-    
+.sideLink {
+  display: flex;
+  z-index: 1;
+  transition: 500ms ease-in-out;
+  padding: 25px 0px;
 }
-hr{
-    border: 1px solid #383838;
-    width: 100%;
+.sideLink span {
+  margin-left: 30px;
+  margin-top: 5px;
+  color: #bcbcbc;
+}
+hr {
+  border: 1px solid #383838;
+  width: 100%;
+}
+.slide {
+  position: absolute;
+  height: 75px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  border-left: 5px solid #ff4003;
+  z-index: -1;
+  transition: 0.5s ease-in-out;
+}
+/* .rirusidebar .firstList ~ .slide {
+  top: 0px;
+  transition: 0.5s ease-in-out;
+}
+.rirusidebar .secondList ~ .slide {
+  top: 75px;
+  transition: 0.5s ease-in-out;
+}
+.rirusidebar .thirdList ~ .slide {
+  top: 150px;
+  transition: 0.5s ease-in-out;
+}  */
+.rirusidebar .secondList svg path, .rirusidebar .thirdList svg path {
+  fill: #ff4003;
+}
+.rirusidebar .firstList svg path{
+    stroke: #ff4003;
 }
