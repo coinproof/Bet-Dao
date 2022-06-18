@@ -236,8 +236,8 @@ const index = ({ children }) => {
           )}
         >
           <a
-            href="https://62a4a3981ffcb3269d50ae0e--betting-platform.netlify.app/"
-            target="_black"
+            href="https://eclectic-dieffenbachia-aae004.netlify.app/"
+            target="_blank"
             className={tw("cursor-pointer")}
             // onClick={() => history.push("/betSlip")}
           >
