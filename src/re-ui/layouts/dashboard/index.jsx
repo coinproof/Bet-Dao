@@ -38,7 +38,7 @@ import bond from "./../../../assets/bond.png";
 import docs from "./../../../assets/docs.png";
 import stake from "./../../../assets/stake.png";
 import betlogo from "./../../../assets/betswamplogo.png";
-
+let TOP = {top:'0px'}
 const index = ({ children }) => {
   const { connect, disconnect, connected, web3, chainID } = useWeb3Context();
 
@@ -58,6 +58,7 @@ const index = ({ children }) => {
   const [slideCount, setSlideCount] = useState({
     top: "0px",
   })
+  
 
   useEffect(() => {
     const init = async () => {
@@ -102,7 +103,7 @@ const index = ({ children }) => {
 
   const descriptionElementRef = React.useRef(null);
 
-  console.log(xd);
+  
 
   const [sidebar, setSidebar] = useState(!isMobile);
   const [current, setCurrent] = useState("bet slip");
@@ -189,7 +190,6 @@ const index = ({ children }) => {
   }, [isMobile]);
 
   useEffect(() => {
-    console.log(xd.path);
     setCurrent(xd.path);
   }, [xd]);
 
@@ -212,16 +212,18 @@ const index = ({ children }) => {
   //     setActive(3);
   //   }
   // }, 100);
-  const handleSlide = (num) => {
+
+  const handleSlide = async(num) => {
     if (num === 1) {
-      setSlideCount({top: '0px'})
+      TOP = {top:'0px'}
     } else if (num === 2){
-      setSlideCount({top: '75px'})
+      TOP = {top:'75px'}
     }else if(num === 3){
-      setSlideCount({top: '150px'})
+      TOP = {top:'150px'}
     }
   }
 
+  console.log("SlideCount",TOP)
   return (
     <section className={tw("w-full min-h-screen flex flex-col relative")}>
       <header
@@ -504,7 +506,7 @@ const index = ({ children }) => {
                   <span>Docs</span>
                 </div>
               </li>
-              <li className="slide" style={slideCount}></li>
+              <li className="slide" style={TOP}></li>
             </ul>
             {/* {sidebarData.map(({ title, icon, path, special }) => (
               <div
