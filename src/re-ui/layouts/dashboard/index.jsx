@@ -243,7 +243,7 @@ const index = ({ children }) => {
             className={tw("cursor-pointer")}
             // onClick={() => history.push("/betSlip")}
           >
-            BETS
+            MARKET
           </a>
 
           <p
