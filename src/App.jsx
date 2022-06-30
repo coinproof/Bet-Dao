@@ -48,6 +48,7 @@ import {
   REUIBond,
   REUIChooseBond,
   REUIOverview,
+  REUIFaucet
 } from "./re-ui/pages";
 import Dashboard from "./re-ui/layouts/dashboard";
 
@@ -247,7 +248,7 @@ function App() {
           {/* Re-ui pages */}
 
           <Route exact path={["/dashboard", "/"]} component={REUIOverview} />
-
+          <Route path="/faucet" component={REUIFaucet} />
           <Route path="/stake" component={REUIStake} />
           <Route path="/betslip" component={REUIBetSlip} />
           <Route exact path="/bonds">

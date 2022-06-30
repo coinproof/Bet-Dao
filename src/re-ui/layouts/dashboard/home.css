@@ -132,7 +132,7 @@ hr {
   top: 150px;
   transition: 0.5s ease-in-out;
 }  */
-.rirusidebar .secondList svg path, .rirusidebar .thirdList svg path {
+.rirusidebar .secondList svg path, .rirusidebar .thirdList svg path, .fourthList svg {
   fill: #ff4003;
 }
 .rirusidebar .firstList svg path{

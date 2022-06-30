@@ -8433,6 +8433,11 @@ glogg@^1.0.0:
   dependencies:
     sparkles "^1.0.0"
 
+goober@^2.1.1:
+  version "2.1.10"
+  resolved "https://registry.yarnpkg.com/goober/-/goober-2.1.10.tgz#058def43ba1e3b06f973dbb372a4978aa42f1049"
+  integrity sha512-7PpuQMH10jaTWm33sQgBQvz45pHR8N4l3Cu3WMGEWmHShAcTuuP7I+5/DwKo39fwti5A80WAjvqgz6SSlgWmGA==
+
 got@9.6.0:
   version "9.6.0"
   resolved "https://registry.yarnpkg.com/got/-/got-9.6.0.tgz#edf45e7d67f99545705de1f7bbeeeb121765ed85"
@@ -14316,7 +14321,14 @@ react-ga4@^1.0.5:
   resolved "https://registry.yarnpkg.com/react-ga4/-/react-ga4-1.4.1.tgz#6ee2a2db115ed235b2f2092bc746b4eeeca9e206"
   integrity sha512-ioBMEIxd4ePw4YtaloTUgqhQGqz5ebDdC4slEpLgy2sLx1LuZBC9iYCwDymTXzcntw6K1dHX183ulP32nNdG7w==
 
-react-icons@^4.3.1:
+react-hot-toast@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/react-hot-toast/-/react-hot-toast-2.2.0.tgz#ab6f4caed4214b9534f94bb8cfaaf21b051e62b9"
+  integrity sha512-248rXw13uhf/6TNDVzagX+y7R8J183rp7MwUMNkcrBRyHj/jWOggfXTGlM8zAOuh701WyVW+eUaWG2LeSufX9g==
+  dependencies:
+    goober "^2.1.1"
+
+react-icons@^4.4.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.4.0.tgz#a13a8a20c254854e1ec9aecef28a95cdf24ef703"
   integrity sha512-fSbvHeVYo/B5/L4VhB7sBA1i2tS8MkT0Hb9t2H1AVPkwGfVHLJCqyr2Py9dKMxsyM63Eng1GkdZfbWj+Fmv8Rg==

@@ -38,6 +38,7 @@ import bond from "./../../../assets/bond.png";
 import docs from "./../../../assets/docs.png";
 import stake from "./../../../assets/stake.png";
 import betlogo from "./../../../assets/betswamplogo.png";
+import {FaFaucet} from 'react-icons/fa'
 let TOP = {top:'0px'}
 const index = ({ children }) => {
   const { connect, disconnect, connected, web3, chainID } = useWeb3Context();
@@ -196,6 +197,9 @@ const index = ({ children }) => {
       TOP = {top:'75px'}
     }else if(num === 3){
       TOP = {top:'150px'}
+    }
+    else if(num === 4){
+      TOP = {top:'225px'}
     }
   }
 
@@ -405,6 +409,7 @@ const index = ({ children }) => {
                   <span>BOND</span>
                 </NavLink>
               </li>
+              
               <li
                 className={
                   window.location.pathname.includes("/stake") === true
@@ -462,6 +467,19 @@ const index = ({ children }) => {
                   </svg>
 
                   <span>STAKE</span>
+                </NavLink>
+              </li>
+              <li
+                className={
+                  window.location.pathname.includes("/faucet") === true
+                    ? "fourthList"
+                    : ""
+                }
+                onClick={() => handleSlide(4)}
+              >
+                <NavLink to="/faucet" className="sideLink">
+                  <FaFaucet size={25}  />
+                  <span>FAUCET</span>
                 </NavLink>
               </li>
               <hr />
