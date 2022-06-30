@@ -204,22 +204,22 @@ const Overview = () => {
         <Charts
           chartFill="rgba(255, 64, 3, 0.6)"
           title="TOTAL VALUE DEPOSITED"
-          price="$600,000,000"
+          price="$0"
         />
         <Charts
           chartFill="rgba(3, 255, 195, 0.6)"
           title="Market Value of Treasury Assets"
-          price="$600,000,000"
+          price="$0"
         />
         <Charts
           chartFill="rgba(3, 225, 255, 0.6)"
           title="SBETS STAKED"
-          price="$600,000,000"
+          price="$0"
         />
         <Charts
           chartFill="rgba(220, 3, 255, 0.6)"
           title="Protocol Owned Liquidity BUSD-BETS"
-          price="$600,000,000"
+          price="$0"
         />
       </div>
     </DashboardLayout>

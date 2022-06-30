@@ -493,11 +493,11 @@ const index = ({ children }) => {
                 <div className="sideLink">
                   <img src={betlogo} width={25} />
                   <a
-                    href="https://eclectic-dieffenbachia-aae004.netlify.app/"
+                    href="https://betswamp.com/app"
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <span>DECENTRALISED BETTING</span>
+                    <span>DECENTRALIZED BETTING</span>
                   </a>
                 </div>
               </li>
@@ -505,7 +505,7 @@ const index = ({ children }) => {
               <li>
                 <div className="sideLink">
                   <img src={docs} width={20}/>
-                  <a href="https://bet-swamp.gitbook.io/betswamp-v.2.0/the-odd-problem" target="_blank" rel="noreferrer">
+                  <a href="https://bet-swamp.gitbook.io/betswamp-v.2.0/" target="_blank" rel="noreferrer">
                   <span>&nbsp;DOCS</span></a>
                 </div>
               </li>
