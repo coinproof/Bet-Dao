@@ -143,32 +143,8 @@ const index = ({ children }) => {
       icon: <Coins />,
       path: ["/stake"],
     },
-    // {
-    //   title: "bet slip",
-    //   icon: <BetSlip />,
-    //   path: "/betslip",
-    // },
-    // {
-    //   title: "Create Event",
-    //   icon: <CreateEvent />,
-    //   path: "/createevent",
-    // },
-    // {
-    //   title: "validate events",
-    //   icon: <Validate />,
-    //   path: "/validateevents",
-    // },
-    // {
-    //   title: "self help",
-    //   icon: <SelfHelp />,
-    //   path: "/selfhelp",
-    // },
-    // {
-    //   title: "bETSWAMP DOA",
-    //   icon: <Doa />,
-    // },
     {
-      title: "Decentralised betting",
+      title: "Decentralized betting",
       icon: (
         <img
           src={logo2Png}
@@ -238,7 +214,7 @@ const index = ({ children }) => {
           )}
         >
           <a
-            href="https://eclectic-dieffenbachia-aae004.netlify.app/"
+            href="https://betswamp.com/app"
             target="_blank"
             rel="noreferrer"
             className={tw("cursor-pointer")}
